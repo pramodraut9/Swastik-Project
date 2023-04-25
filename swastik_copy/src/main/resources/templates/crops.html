@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="eng" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Crops</title>
+
+<!-- start css -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<!-- end css -->
+</head>
+<body>
+
+	<div class="container mt-4">
+		<h1 class="text-center fw-bold text-Dark">Crops</h1>
+
+
+		<a class="btn btn-primary" th:href="@{/addcrop}">Add</a> <a
+			class="btn btn-primary" th:href="@{/allcrops}">Show All</a>
+
+
+		<div th:if="${session.msg}">
+			<h5 class=" text-center text-success" th:text="${session.msg}"></h5>
+			<!-- <th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
+
+		</div>
+
+		<!-- Start-table -->
+
+		<div class="row">
+			<table class="table table-hover text-center table-bordered mt-4">
+
+				<thead>
+					<tr>
+
+						<th scope="col">id</th>
+						<th scope="col">Name</th>
+						<th scope="col" colspan="2">Action</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="c:${viewcrops}">
+						<td>[[${c.id}]]</td>
+						<td>[[${c.name}]]</td>
+						
+						<td><a th:href="@{'/editcrop/'+${c.id} }"class="btn btn-sm btn-primary">Edit</a> 
+							
+							<a th:href="@{'/deletecrop/'+${c.id} }"class="btn btn-sm btn-danger">Delete</a>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- End-table -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+</html>

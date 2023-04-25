@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Recommendation</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<!-- end css -->
+</head>
+<body>
+	<div class="container mt-4">
+		<h1 class="text-center fw-bold text-Dark">Recommendation</h1>
+
+		<a class="btn btn-primary" th:href="@{addrecom}">Add</a>
+		 <a class="btn btn-primary" th:href="@{allreco}">ShowAll</a>
+
+	
+
+	<div th:if="${session.msg}">
+		<h5 class=" text-center text-success" th:text="${session.msg}"></h5>
+		<!-- <th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
+
+	</div>
+
+	<!--start table  -->
+
+	<div class="row">
+		<table class="table table-hover text-center table-bordered mt-4">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Crop Id</th>
+					<th scope="col">Farmer Id</th>
+					<th scope="col">Dose</th>
+					<th scope="col">Spare</th>
+					<th scope="col">Drip</th>
+					<th scope="col">Spare_water</th>
+					<th scope="col" colspan="2">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="r:${veiwdata}">
+					<td>[[${r.id}]]</td>
+					<td>[[${r.crops_id}]]</td>
+					<td>[[${r.farmers_id"}]]</td>
+					<td>[[${r.dose}]]</td>
+					<td>[[${r.spare}]]</td>
+					<td>[[${r.drip}]]</td>
+					<td>[[${r.spare_water}]]</td>
+
+				<td> 
+				   <a th:href="@{'/editreco/'+${r.id} }"class="btn btn-sm btn-primary">Edit</a> 
+				   <a th:href="@{'/deletereco/'+${r.id} }"class="btn btn-sm btn-danger">Delete</a> 
+				</td>
+
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+	</div>
+
+	<!--End table  -->
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous">
+		
+	</script>
+</body>
+</html>

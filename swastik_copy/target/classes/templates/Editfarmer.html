@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<!-- start css -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<!-- end css -->
+
+</head>
+<body>
+
+	<div class="container p-4">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card">
+					<div class="card-body">
+
+						<h1 class="text-center text-dark ">Edit Crop</h1>
+
+						<div th:if="${session.msg}">
+							<h5 class=" text-center text-success" th:text="${session.msg}"></h5>
+							<!-- <th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
+
+							<!-- Form Start -->
+							<form th:action="@{/savefarmer}" method="post">
+							
+							<input type="hidden" th:value="${farmer.id}" name="id">
+							
+								<div class="mb-3"></div>
+								<label for="exampleInputEmail1" class="form-label"> Name<br>
+								</label> <input type="text" class="form-control" id="exampleInputEmail1"
+									aria-describedby="emailHelp" name="name" th:value="${farmer.name}"><br>
+
+								<div class="mb-3"></div>
+								<label for="exampleInputEmail1" class="form-label">
+									Mobile no <br>
+								</label> <input type="number" class="form-control"
+									id="exampleInputEmail1" aria-describedby="emailHelp"
+									name="mobileno" th:value="${farmer.mobileno}"><br>
+
+								<div class="mb-3"></div>
+								<label for="exampleInputEmail1" class="form-label">
+									Village <br>
+								</label> <input type="text" class="form-control" id="exampleInputEmail1"
+									aria-describedby="emailHelp" name="village" th:value="${farmer.village}"><br>
+
+								<div class="mb-3"></div>
+								<label for="exampleInputEmail1" class="form-label"> Crop
+									Id <br>
+								</label> <input type="text" class="form-control" id="exampleInputEmail1"
+									aria-describedby="emailHelp" name="crop_id" th:value="${farmer.crop_id}"><br>
+
+
+								<button type="submit" class="btn btn-primary">Submit</button>
+								<a class="btn btn-dark" th:href="@{/allfarmers}">Back</a>
+							</form>
+							<!-- End Start -->
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+</html>
